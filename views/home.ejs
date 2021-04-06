@@ -4,11 +4,14 @@
   <p><%= hometext %></p>
 
   <% posts.forEach(function(post){ %>
-    <h2><%= post.name %></h2>
-    <p>
-      <%= post.body.substring(0, 100) + "..." %>
-      <a href="/posts/<%=post.name%>">read more</a>
-    </p>
+    <form action="/delete" method="post">
+      <h2><%= post.name %></h2>
+      <p>
+        <%= post.body.substring(0, 100) + "..." %>
+        <a href="/posts/<%=post.name%>">read more</a>
+        <button class="btn btn-danger btn-sm" type="submit" value="<%= post.name %>" name="delete">Delete</button>
+      </p>
+    </form>
   <% }) %>
 
 

@@ -68,6 +68,15 @@ app.get("/posts/:new", function(req, res){
   })
 });
 
+app.post("/delete", function (req, res){
+  const dd = req.body.delete
+  Post.findOneAndDelete({name: dd}, function(err){
+    if (!err){
+      res.redirect("/");
+    }
+  })
+});
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
